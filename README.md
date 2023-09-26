@@ -9,4 +9,17 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
 3. PATCH version when you make backward compatible bug fixes
 
 Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
-Source: [https://semver.org/](Semantic Versioning).
+Source: [Semantic Versioning](https://semver.org).
+
+## Terraform CLI Refactoring
+
+**Terraform CLI installation** [documentation](https://developer.hashicorp.com/terraform/downloads) for **Linux > Ubuntu/Debian**.
+
+### GPG Command
+* Was getting the following when running 
+```
+wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg -y
+```
+>  File '/usr/share/keyrings/hashicorp-archive-keyring.gpg' exists. Overwrite? (y/N)
+* This message shows up at second run if the gpg key already exists
+* Use `-y` parameter with gpg to force command execution even if the key already exists.
