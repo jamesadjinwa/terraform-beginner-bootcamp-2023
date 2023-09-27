@@ -23,3 +23,18 @@ wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/sha
 >  File '/usr/share/keyrings/hashicorp-archive-keyring.gpg' exists. Overwrite? (y/N)
 * This message shows up at second run if the gpg key already exists
 * Use `-y` parameter with gpg to force command execution even if the key already exists.
+
+## Working with Environment variables
+
+* List all environment variables (env vars) using `env` command.
+* Set env vars using `export VARIABLE_NAME=VALUE`
+* Unset env vars using `unset VARIABLE_NAME`
+* Print env vars using `echo $VARIABLE_NAME`
+
+### Set Env vars globally
+
+* Make env vars persistent across terminals by using bash profile
+* Make env vars persistent in **Gitpod secrets** by using `gp`. An example is:
+    ```bash
+    gp env VARIABLE_NAME=VALUE`
+    ```
