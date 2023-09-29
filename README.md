@@ -59,3 +59,17 @@ wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/sha
         > ```
 * [Environment variables to configure the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html).
 
+## Terraform Basics
+
+### Terraform Registry
+
+* [Registry.terraform.io](https://registry.terraform.io)
+* [Providers](https://registry.terraform.io/browse/providers)
+* [Modules](https://registry.terraform.io/browse/modules)
+
+* terraform init
+* terraform plan
+* terraform apply → Without prompting for 'yes' run `terraform apply --auto-approve`
+* terraform.tfstate → State file, current state of the infrastructure. This file should not never be commit to version control system (vcs) because 
+    it contains very sensitive information. This file should never be lost for an exisitng infrastructure. 
+* .terraform.lock.hcl → Lock file
