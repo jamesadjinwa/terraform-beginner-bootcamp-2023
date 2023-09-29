@@ -74,3 +74,34 @@ wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/sha
     it contains very sensitive information. This file should never be lost for an exisitng infrastructure. 
 * *.terraform.lock.hcl* → Lock file
 * `terraform destroy`
+
+
+### Terraform Cloud
+
+* To use Terraform cloud add the following in the terraform block:
+    ```
+    cloud {
+        organization = "NameOfOrganization"
+        
+        workspaces {
+        name = "NameOfWorkspace"
+        }
+    }
+    ```
+* Goto this [page](https://app.terraform.io/app/settings/tokens?source=terraform-login) to generate a Terraform cloud token. 
+* Gitpod stores the token in `/home/gitpod/.terraform.d/credentials.tfrc.json`
+* To manually create `credentials.tfrc.json`:
+    ```bash
+    touch /home/gitpod/.terraform.d/credentials.tfrc.json
+    open /home/gitpod/.terraform.d/credentials.tfrc.json
+    ```
+* Content of `/home/gitpod/.terraform.d/credentials.tfrc.json`:
+    ```
+    {
+        "credentials": {
+            "app.terraform.io": {
+                "token": "YOUR-TERRAFORM-CLOUD-TOKEN"
+            }
+        }
+    }
+    ```
