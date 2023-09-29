@@ -67,9 +67,10 @@ wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/sha
 * [Providers](https://registry.terraform.io/browse/providers)
 * [Modules](https://registry.terraform.io/browse/modules)
 
-* terraform init
-* terraform plan
-* terraform apply → Without prompting for 'yes' run `terraform apply --auto-approve`
-* terraform.tfstate → State file, current state of the infrastructure. This file should not never be commit to version control system (vcs) because 
+* `terraform init`
+* `terraform plan`
+* `terraform apply` → Without prompting for 'yes' run `terraform apply --auto-approve`
+* *terraform.tfstate* → State file, current state of the infrastructure. This file should not never be commit to version control system (vcs) because 
     it contains very sensitive information. This file should never be lost for an exisitng infrastructure. 
-* .terraform.lock.hcl → Lock file
+* *.terraform.lock.hcl* → Lock file
+* `terraform destroy`
