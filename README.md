@@ -105,3 +105,8 @@ wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/sha
         }
     }
     ```
+
+    ### Automate Terraform login
+
+    * Script to generate credentials [bin/generate_tfrc_creds](./bin/generate_tfrc_creds)
+    * For the script to generate the json file, setup the env var `TERRAFORM_CLOUD_TOKEN`
