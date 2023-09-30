@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Check if the TERRAFORM_CLOUD_TOKEN environment variable is set
+if [ -z "$TERRAFORM_CLOUD_TOKEN" ]; then
+  echo "Error: TERRAFORM_CLOUD_TOKEN environment variable is not set."
+  exit 1
+fi
+
+# Create the credentials.tfrc.json file in /home/gitpod/.terraform.d/
+mkdir -p /home/gitpod/.terraform.d/
+cat <<EOF > /home/gitpod/.terraform.d/credentials.tfrc.json
+{
+  "credentials": {
+    "app.terraform.io": {
+      "token": "$TERRAFORM_CLOUD_TOKEN"
+    }
+  }
+}
+EOF
+
+echo "credentials.tfrc.json file has been generated."
