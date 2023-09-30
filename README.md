@@ -106,7 +106,32 @@ wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/sha
     }
     ```
 
-    ### Automate Terraform login
+### Automate Terraform login
 
-    * Script to generate credentials [bin/generate_tfrc_creds](./bin/generate_tfrc_creds)
-    * For the script to generate the json file, setup the env var `TERRAFORM_CLOUD_TOKEN`
+* Script to generate credentials [bin/generate_tfrc_creds](./bin/generate_tfrc_creds)
+* For the script to generate the json file, setup the env var `TERRAFORM_CLOUD_TOKEN`
+
+
+### Terraform cloud organization
+
+* The Default Execution Mode should be set up as **Local** not ~~Remote~~.
+
+![Terraform Cloud Execution mode](./media/terracloudexecmode.png)
+
+* Setting Remote execution mode will cause a credentials error when executing `Terraform plan`
+```
+Error: No valid credential sources found
+│ 
+│   with provider["registry.terraform.io/hashicorp/aws"],
+│   on main.tf line 22, in provider "aws":
+│   22: provider "aws" {
+│ 
+│ Please see https://registry.terraform.io/providers/hashicorp/aws
+│ for more information about providing credentials.
+│ 
+│ Error: failed to refresh cached credentials, no EC2 IMDS role found,
+│ operation error ec2imds: GetMetadata, request canceled, context deadline
+│ exceeded
+│ 
+```
+
