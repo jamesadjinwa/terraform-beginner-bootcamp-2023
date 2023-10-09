@@ -147,3 +147,26 @@ PROJECT_ROOT
 ├── providers.tf            # defined required providers and their configuration
 ├── outputs.tf              # stores our outputs
 └── README.md               # required for root modules
+
+
+## Terraform import and configuration drift
+
+* Removed `random` resource (Use this [site](https://www.gigacalculator.com/randomizers/random-string-generator.php) to generate random strings)
+* Add terraform veriable `bucket.name`
+
+## What happens if we lose our state file?
+
+* If you lose your statefile, you most likley have to tear down all your cloud infrastructure manually.
+* You can use terraform import but it won't work for all cloud resources. You need check the terraform providers documentation for which resources support import.
+
+### Fix Missing Resources with Terraform Import
+
+`terraform import aws_s3_bucket.bucket <bucket-name>`
+
+[Terraform Import](https://developer.hashicorp.com/terraform/cli/import)
+[AWS S3 Bucket Import](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#import)
+
+### Fix Manual Configuration
+
+* If someone goes and deletes or modifies your cloud resource manually through ClickOps. 
+* If we run Terraform plan it will attempt to put our infrastructure back into the expected state fixing the *Configuration Drift*.
