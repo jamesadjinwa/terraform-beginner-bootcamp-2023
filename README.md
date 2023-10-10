@@ -199,7 +199,7 @@ PROJECT_ROOT
 
 ### Terraform Module Structure
 
-It is recommend to place modules in a `modules` directory when locally developing modules but you can name it whatever you like.
+It is recommended to place modules in a `modules` directory when locally developing modules but you can name it whatever you like.
 
 ### Passing Input Variables
 
@@ -216,7 +216,7 @@ module "terrahouse_aws" {
 
 ### Modules Sources
 
-Using the source we can import the module from various places eg:
+Using the source we can import the module from various places, eg:
 - locally
 - Github
 - Terraform Registry
@@ -225,4 +225,48 @@ Using the source we can import the module from various places eg:
 module "terrahouse_aws" {
   source = "./modules/terrahouse_aws"
 }
+```
+
+## Working with Files in Terraform
+
+
+### Fileexists function
+
+This is a built-in terraform function to check the existence of a file.
+
+```tf
+condition = fileexists(var.error_html_filepath)
+```
+
+https://developer.hashicorp.com/terraform/language/functions/fileexists
+
+### Filemd5
+
+https://developer.hashicorp.com/terraform/language/functions/filemd5
+
+### Path Variable
+
+In terraform there is a special variable called `path` that allows us to reference local paths:
+- path.module = get the path for the current module
+- path.root = get the path for the root module
+[Special Path Variable](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)
+
+```
+resource "aws_s3_object" "index_html" {
+  bucket = aws_s3_bucket.website_bucket.bucket
+  key    = "index.html"
+  source = var.index_html_filepath
+}
+```
+
+The value of the path variable should be relative to the workspace. That is:
+```
+index_html_filepath="public/index.html"
+error_html_filepath="public/error.html"
+```
+
+And not:
+```
+index_html_filepath="/workspace/terraform-beginner-bootcamp-2023/public/index.html"
+error_html_filepath="/workspace/terraform-beginner-bootcamp-2023/public/error.html"
 ```
