@@ -1,2 +1,4 @@
 user_uuid="db8fc491-7712-4149-b2c2-19a84f7c3cc6"
 bucket_name = "a4bms9nn6fpkl1vb2xppelli3k0uqez2ruae87"
+index_html_filepath="public/index.html"
+error_html_filepath="public/error.html"
