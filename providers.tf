@@ -15,10 +15,6 @@ terraform {
 }
 
 
-provider "aws" {
-  # Configuration options
-}
-
-provider "random" {
-  # Configuration options
-}
+# provider "aws" {
+#   # Configuration options
+# }

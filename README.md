@@ -1,5 +1,29 @@
 # Terraform Beginner Bootcamp 2023
 
+- [Terraform Beginner Bootcamp 2023](#terraform-beginner-bootcamp-2023)
+  * [Semantic Versioning :mage:](#semantic-versioning--mage-)
+  * [Terraform CLI Refactoring](#terraform-cli-refactoring)
+    + [GPG Command](#gpg-command)
+  * [Working with Environment variables](#working-with-environment-variables)
+    + [Set Env vars globally](#set-env-vars-globally)
+  * [AWS CLI installation](#aws-cli-installation)
+  * [Terraform Basics](#terraform-basics)
+    + [Terraform Registry](#terraform-registry)
+    + [Terraform Cloud](#terraform-cloud)
+    + [Automate Terraform login](#automate-terraform-login)
+    + [Terraform cloud organization](#terraform-cloud-organization)
+  * [Root Module Structure](#root-module-structure)
+  * [Terraform import and configuration drift](#terraform-import-and-configuration-drift)
+  * [What happens if we lose our state file?](#what-happens-if-we-lose-our-state-file-)
+    + [Fix Missing Resources with Terraform Import](#fix-missing-resources-with-terraform-import)
+    + [Fix Manual Configuration](#fix-manual-configuration)
+  * [Terraform Modules](#terraform-modules)
+    + [Terraform Module Structure](#terraform-module-structure)
+    + [Passing Input Variables](#passing-input-variables)
+    + [Modules Sources](#modules-sources)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 ## Semantic Versioning :mage:
 
 Given a version number MAJOR.MINOR.PATCH, increment the:
@@ -170,3 +194,35 @@ PROJECT_ROOT
 
 * If someone goes and deletes or modifies your cloud resource manually through ClickOps. 
 * If we run Terraform plan it will attempt to put our infrastructure back into the expected state fixing the *Configuration Drift*.
+
+## Terraform Modules
+
+### Terraform Module Structure
+
+It is recommend to place modules in a `modules` directory when locally developing modules but you can name it whatever you like.
+
+### Passing Input Variables
+
+We can pass input variables to our module.
+The module has to declare the terraform variables in its own variables.tf
+
+```tf
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+  user_uuid = var.user_uuid
+  bucket_name = var.bucket_name
+}
+```
+
+### Modules Sources
+
+Using the source we can import the module from various places eg:
+- locally
+- Github
+- Terraform Registry
+
+```tf
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+}
+```
