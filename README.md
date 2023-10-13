@@ -253,7 +253,7 @@ In terraform there is a special variable called `path` that allows us to referen
 
 ```
 resource "aws_s3_object" "index_html" {
-  bucket = aws_s3_bucket.website_bucket.bucket
+  bucket = aws_s3_bucket.project_bucket.bucket
   key    = "index.html"
   source = var.index_html_filepath
 }
@@ -390,3 +390,34 @@ resource "aws_instance" "web" {
 }
 ```
 https://developer.hashicorp.com/terraform/language/resources/provisioners/remote-exec
+
+## Fileset function
+
+This function expects 2 arguments/ the *path* and the *pattern*.
+
+Use `terraform console` to test this function.
+```
+> fileset("${path.root}/public", "*")
+toset([
+  "error.html",
+  "index.html",
+  "supermario.jpg",
+])
+> fileset("${path.root}/public", "*.{jpg,png,gif}")
+toset([
+  "supermario.jpg",
+])
+>  
+```
+
+## For Each Expressions
+
+For each allows us to enumerate over complex data types
+
+```sh
+[for s in var.list : upper(s)]
+```
+
+This is mostly useful when you are creating multiples of a cloud resource and you want to reduce the amount of repetitive terraform code.
+
+[For Each Expressions](https://developer.hashicorp.com/terraform/language/expressions/for)
