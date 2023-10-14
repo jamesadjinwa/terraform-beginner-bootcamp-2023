@@ -9,6 +9,32 @@ resource "aws_s3_bucket" "project_bucket" {
   }
 }
 
+resource "aws_s3_bucket_ownership_controls" "project_bucket_ownership" {
+  bucket = aws_s3_bucket.project_bucket.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
+
+resource "aws_s3_bucket_public_access_block" "project_bucket_access_acl" {
+  bucket = aws_s3_bucket.project_bucket.id
+
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
+}
+
+resource "aws_s3_bucket_acl" "project_bucket_acl" {
+  depends_on = [
+    aws_s3_bucket_ownership_controls.project_bucket_ownership,
+    aws_s3_bucket_public_access_block.project_bucket_access_acl,
+  ]
+
+  bucket = aws_s3_bucket.project_bucket.id
+  acl    = "public-read"
+}
+
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_website_configuration
 resource "aws_s3_bucket_website_configuration" "website_configuration" {
   bucket = aws_s3_bucket.project_bucket.bucket
