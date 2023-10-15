@@ -421,3 +421,11 @@ For each allows us to enumerate over complex data types
 This is mostly useful when you are creating multiples of a cloud resource and you want to reduce the amount of repetitive terraform code.
 
 [For Each Expressions](https://developer.hashicorp.com/terraform/language/expressions/for)
+
+## Week1 Project Validation
+
+### Content type
+
+The validation tool throws a fail when checking the object type of index.html.
+Changing the html code by explicitly setting the content type in the headers `meta` tag did not solve the issue.
+Need to add `content_type = "text/html"` in the `aws_s3_object` resource definition.
