@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "terratowns" {
-  endpoint = "http://localhost:4567"
+  endpoint = "http://localhost:4567/api"
   user_uuid="e328f4ab-b99f-421c-84c9-4ccea042c7d1" 
   token="9b49b3fb-b8e9-483c-b703-97ba88eef8e0"
 }
@@ -28,8 +28,10 @@ provider "terratowns" {
   name = "Yaamelaa"
 } */
 
+
+
 resource "terratowns_home" "home" {
-  name = "Mario in 2023!"
+  name = "Mario in 2023 and beyond!"
   description = <<DESCRIPTION
 Super Mario Bros. Wonder[b] is a 2023 platform game developed and 
 published by Nintendo for the Nintendo Switch. It is the first 
