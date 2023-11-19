@@ -5,13 +5,13 @@ terraform {
       version = "5.19.0"
     }
   }  */
-  cloud {
+ /*  cloud {
     organization = "Yaamelaa"
     
     workspaces {
       name = "terra-house-0"
     }
-  }
+  } */
 }
 
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity
