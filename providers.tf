@@ -1,10 +1,10 @@
 terraform {
-  required_providers {
+/*   required_providers {
     aws = {
       source = "hashicorp/aws"
       version = "5.19.0"
     }
-  }
+  }  */
   cloud {
     organization = "Yaamelaa"
     
