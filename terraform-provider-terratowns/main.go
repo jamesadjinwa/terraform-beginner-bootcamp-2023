@@ -76,6 +76,8 @@ func validateUUID(v interface{}, k string) (ws []string, errors []error) {
 	return
 } 
 
+
+
 func providerConfigure(p *schema.Provider) schema.ConfigureContextFunc {
 	return func(ctx context.Context, d *schema.ResourceData) (interface{}, diag.Diagnostics ) {
 		log.Print("providerConfigure:start")
