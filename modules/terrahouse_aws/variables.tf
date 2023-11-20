@@ -51,3 +51,8 @@ variable "assets_path" {
   description = "Path to assets folder"
   type = string
 }
+
+variable "public_path" {
+  description = "The file path for the public directory"
+  type        = string
+}
