@@ -7,7 +7,7 @@ variable "user_uuid" {
   }
 }
 
-variable "bucket_name" {
+/* variable "bucket_name" {
   description = "The name of the S3 bucket"
   type        = string
 
@@ -15,7 +15,7 @@ variable "bucket_name" {
     condition     = can(regex("^[-a-zA-Z0-9]+$", var.bucket_name))
     error_message = "Invalid S3 bucket name. It must consist of only letters, numbers, hyphens, or underscores."
   }
-}
+} */
 
 variable "index_html_filepath" {
   description = "The file path for index.html"
