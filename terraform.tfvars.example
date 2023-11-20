@@ -1,6 +1,17 @@
-user_uuid="db8fc491-7712-4149-b2c2-19a84f7c3cc6"
-bucket_name = "a4bms9nn6fpkl1vb2xppelli3k0uqez2ruae87"
+terratowns_endpoint = "https://terratowns.cloud/api"
+teacherseat_user_uuid = "example-nacklanckla-anacklanl-anka-anlcankl"
+terratowns_access_token = "example-nacklanckla-anacklanl-anka-anlcankl"
 index_html_filepath="public/index.html"
 error_html_filepath="public/error.html"
-content_version=3
+content_version=1
 assets_path="public"
+
+mario = {
+    public_path = "public/mario"
+    content_version = 2
+}
+
+payday = {
+    public_path = "public/payday"
+    content_version = 1
+}
